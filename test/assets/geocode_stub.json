@@ -1,0 +1,115 @@
+{
+
+    *
+      -
+      results: [
+          o
+            -
+            {
+                +
+                  -
+                  address_components: [
+                      #
+                        -
+                        {
+                            * long_name: "Coron"
+                            * short_name: "Coron"
+                            *
+                              -
+                              types: [
+                                  o "locality"
+                                  o "political"
+                              ]
+                        }
+                      #
+                        -
+                        {
+                            * long_name: "Palawan"
+                            * short_name: "Palawan"
+                            *
+                              -
+                              types: [
+                                  o "administrative_area_level_2"
+                                  o "political"
+                              ]
+                        }
+                      #
+                        -
+                        {
+                            * long_name: "MIMAROPA"
+                            * short_name: "MIMAROPA"
+                            *
+                              -
+                              types: [
+                                  o "administrative_area_level_1"
+                                  o "political"
+                              ]
+                        }
+                      #
+                        -
+                        {
+                            * long_name: "Philippines"
+                            * short_name: "PH"
+                            *
+                              -
+                              types: [
+                                  o "country"
+                                  o "political"
+                              ]
+                        }
+                  ]
+                + formatted_address: "Coron, Philippines"
+                +
+                  -
+                  geometry: {
+                      #
+                        -
+                        bounds: {
+                            *
+                              -
+                              northeast: {
+                                  o lat: 12.3919822
+                                  o lng: 120.4228592
+                              }
+                            *
+                              -
+                              southwest: {
+                                  o lat: 11.6441663
+                                  o lng: 120.0064087
+                              }
+                        }
+                      #
+                        -
+                        location: {
+                            * lat: 11.9405556
+                            * lng: 120.2402778
+                        }
+                      # location_type: "APPROXIMATE"
+                      #
+                        -
+                        viewport: {
+                            *
+                              -
+                              northeast: {
+                                  o lat: 12.6382982
+                                  o lng: 121.2647529
+                              }
+                            *
+                              -
+                              southwest: {
+                                  o lat: 11.2410114
+                                  o lng: 119.2158027
+                              }
+                        }
+                  }
+                +
+                  -
+                  types: [
+                      # "locality"
+                      # "political"
+                  ]
+            }
+      ]
+    * status: "OK"
+
+}

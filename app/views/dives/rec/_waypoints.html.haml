@@ -1,0 +1,15 @@
+- @dive.profile_visible = false if @dive.new_record? && @dive.waypoints.empty?
+- (3 - @dive.waypoints.length).times{|i| @dive.waypoints.build :depth_unit => @u.units}
+= dive_f.input :profile_visible, :as => :hidden
+
+#profile-on{ on_state(@dive.profile_visible?) }
+  = dive_f.inputs "Multi-level dive #{link_to_hide("profile")}" do
+
+    .column.grid_2
+      = image_tag "computer.gif"
+    .column.grid_6
+      = dive_f.semantic_fields_for :waypoints do |waypoint_f|
+        = render :partial => 'dives/rec/waypoint', :locals => { :waypoint_f => waypoint_f }
+
+
+

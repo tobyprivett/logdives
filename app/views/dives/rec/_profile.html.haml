@@ -1,0 +1,20 @@
+= dive_f.inputs "Depth and Time" do
+  .row
+    .column.grid_2
+      = image_tag 'gauges.gif'
+      #profile-off{ off_state(@dive.profile_visible?) }= link_to("multi-level dive", "#", :id => "show_profile")
+    .column.grid_4
+      = dive_f.input :max_depth_amount, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Max depth', :hint => spacer
+      = dive_f.input :average_depth_amount, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Av. depth', :hint => spacer
+      = dive_f.input :depth_unit, :as => :select,   :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :collection => Depth.units, :include_blank => false, :label => spacer, :required => false, :hint => spacer
+
+    .column.grid_4
+      = dive_f.input :bottom_time, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Bottom time', :hint => 'minutes'
+      = dive_f.input :safety_stop, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Safety stop', :hint => 'minutes'
+      = dive_f.input :total_dive_time, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Total dive time', :hint => 'minutes'
+  .row
+    .column.grid_2 &nbsp;
+
+    = render :partial => 'dives/fields/time_in_time_out', :locals => {:dive_f => dive_f}
+
+

@@ -1,0 +1,19 @@
+= semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = f.inputs 'Register for logdives.com' do
+    = f.input :email, :autocomplete => false
+    = f.input :name, :label => 'Username', :autocomplete => false
+
+    = f.input :password
+    = f.input :password_confirmation, :required => true
+
+    - f.object.bypass_humanizer  = true
+    = f.input :bypass_humanizer, :as => :hidden
+    / = f.input :humanizer_answer, :label => f.object.humanizer_question, :required => true, :hint => 'We need to know that you are human'
+    / = f.input :humanizer_question_id, :as => :hidden
+
+    = f.commit_button :sign_up
+
+    %p
+      = link_to "Didn't receive confirmation email?", new_confirmation_path(resource_name)
+    %p
+      = link_to "Forgotten your password?", "/users/password/new"

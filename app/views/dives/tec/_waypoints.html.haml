@@ -1,0 +1,29 @@
+- waypoint_count = @dive.waypoints.empty? ? 1 : @dive.waypoints.length
+= hidden_field_tag "dive_waypoint_count", waypoint_count
+- (8 - waypoint_count).times{|i| @dive.waypoints.build :depth_unit => @u.units, :duration => nil}
+
+= dive_f.input :profile_visible, :as => :hidden
+#profile-on{ on_state(@dive.profile_visible?) }
+
+  = dive_f.inputs "Profile #{link_to_hide('profile')}" do
+
+    - index = 0
+    .row
+      .column.grid_2
+        = image_tag 'computer.gif'
+      .column.grid_6
+        = dive_f.semantic_fields_for :waypoints do |waypoint_f|
+
+          = render :partial => 'dives/tec/waypoint', :locals => { :waypoint_f => waypoint_f, :index => index, :visible => (waypoint_count > index) }
+          - index += 1
+
+        = link_to "Add", "#", :id => 'add_waypoint_to_dive'
+        |
+        = link_to "Remove", "#", :id => 'remove_waypoint_from_dive'
+
+
+#profile-off{ off_state(@dive.profile_visible?) }
+  %fieldset.inputs.empty
+    %legend
+      Profile
+      = link_to_show("profile")

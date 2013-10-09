@@ -1,0 +1,50 @@
+
+= dive_f.inputs "" do
+
+  .row
+    .column.grid_2
+      .tec-icon{:style => "#{'display:none' if @dive.template == 'rec'}"}
+        = image_tag('tec_icon_70.jpg')
+      .rec-icon{:style => "#{'display:none' if @dive.template == 'tec'}"}
+        = image_tag('rec_icon_70.jpg')
+
+
+      #reload_page_prompt{:style => 'display: none;'}
+        - unless @dive.new_record?
+          = link_to_function "Reload the page", "#", :id => 'link_to_submit_dive_form'
+
+    .column.grid_6
+      - template_hint = spacer
+      - if @dive.new_record?
+        - template_hint = "Technical dive type allows you to log mixed gas / multiple tanks / runtimes"
+      = dive_f.input :template, :as => 'select', :collection => [['Recreational','rec'],['Technical', 'tec']], :include_blank => false, :hint => template_hint, :label => 'Dive type*', :input_html => {:class => 'dive-template-picker'}, :wrapper_html => {:class => 'inline required'}
+      = dive_f.input :dive_no, :as => :string, :wrapper_html => {:class => 'inline'},:input_html => {:class => 'mini-text'}, :label => 'Dive no', :hint => spacer, :required => true
+
+      - date_hint = @dive.errors.include?(:dive_date) ? '' : spacer
+      = dive_f.input :dive_date, :as => :string, :wrapper_html => {:class => 'inline large-text'},:input_html => {:class => 'datetime-text'}, :label => 'Date', :hint => date_hint
+
+  .row
+    .column.grid_2
+      &nbsp;
+    .column.grid_5
+      - location_hint = 'e.g. Blue Hole, Dahab; HMS Scylla, Plymouth'
+      - location_hint = '' if @dive.errors.include?(:location)
+      = dive_f.input :location, :label => 'Dive site', :input_html => {:class => 'location', :autocomplete => 'off'}, :hint => location_hint
+
+  .row
+    .column.grid_2
+      &nbsp;
+    .column.grid_5
+      - description_hint = 'e.g.Wreck dive; Drift dive; Cave dive; Open Water Course, Dive 1'
+      = dive_f.input :description, :hint => description_hint, :label => 'Dive description'
+
+
+    #log
+
+  - if @dive.new_record?
+    .row
+      .column.grid_2
+        &nbsp;
+      .column.grid_5
+        %p
+        <input class="create" id="dive_submit" name="commit" type="submit" value="Save" /><p class="inline-hints">&nbsp;</p></li>

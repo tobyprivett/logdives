@@ -1,0 +1,16 @@
+- tank_f.object.nested = 'deleted' unless visible
+.tank{:id => "tank_#{index}", :style => ("display:none" unless visible)}
+  = tank_f.input :nested, :as => :hidden
+
+  = tank_f.input :volume,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Size', :required => false
+  = tank_f.input :volume_unit, :as => :select,   :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :collection => Volume.units, :include_blank => false, :label => spacer, :required => false
+  %p
+
+  = tank_f.input :start_pressure,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Start', :required => false
+  = tank_f.input :end_pressure,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'End', :required => false
+  = tank_f.input :pressure_unit, :as => :select,   :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :collection => Pressure.units, :include_blank => false, :label => spacer, :required => false
+  = tank_f.input :mix_type, :label => '&nbsp'.html_safe, :as => :select, :collection => ["Air", "Nitrox", "Trimix", "Heliox"], :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text mix-selector'}, :include_blank => false
+  = tank_f.input :o2, :wrapper_html => {:style => ( 'display:none' if ['Air'].include?(tank_f.object.mix_type)), :class => 'inline o2'}, :input_html => {:class => 'mini-text'}, :required => false
+  = tank_f.input :he, :wrapper_html => {:style => ('display:none' if ['Air', 'Nitrox'].include?(tank_f.object.mix_type)), :class => 'inline he'}, :input_html => {:class => 'mini-text'}, :required => false
+
+  %hr

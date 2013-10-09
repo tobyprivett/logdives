@@ -1,0 +1,18 @@
+- if @dive.present? && !@dive.new_record? && @dive.location.present?
+  - @dive_site = DiveSite.where("site like '%#{@dive.location.split(",")[0]}%' ").where("images_hash is not null").first
+- else
+  - @dive_site ||= DiveSite.where("images_hash is not null").offset(rand(1000)).first
+
+
+- if @dive_site
+  %h4= @dive_site.name
+
+  - if @dive_site.images_hash.present?
+    - @dive_site.images_hash.each do |img|
+      = link_to image_tag(img[:thumb]), img[:source], :target => '_blank', :title => img[:title]
+
+  - if @dive_site.weblinks_hash.present?
+    - @dive_site.weblinks_hash.each do |wl|
+      %p
+        = link_to wl[:title], wl[:source], :target => '_blank', :title => wl[:title]
+        = truncate(wl[:description], :length => 100)

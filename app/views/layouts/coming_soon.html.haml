@@ -1,0 +1,31 @@
+!!! 5
+%html{ :lang => "en"}
+  %head
+    %title
+      =t :site_name
+    %meta{ :charset => 'utf-8' }
+    %meta{ :name => 'description', :content => "" }
+    %meta{ :name => 'keywords', :content => "" }
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag :defaults
+
+    /[if lt IE 9]
+      %script{ :src => "http://html5shiv.googlecode.com/svn/trunk/html5.js" }
+
+    = csrf_meta_tag
+  %body
+    .row
+      .column.grid_12
+        #header
+          %h1
+            %a{ :href => '/', :title => "" }
+              =t :site_name
+        #body
+          %h3
+            Launch date: September 1st, 2011
+          .column.grid_12
+            %p <a href='mailto:admin@logdives.com?subject=Beta%20Program'>Contact us</a> to participate in the beta program.
+            %p
+            = write_flash
+            - if Rails.env.test?
+              %p= link_to "Didn't receive confirmation email?", new_confirmation_path(User)

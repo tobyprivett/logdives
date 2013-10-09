@@ -1,0 +1,9 @@
+= semantic_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+  = f.inputs 'Resend confirmation email' do
+    = f.input :email, :autocomplete => false
+    %hr
+    = f.input :humanizer_answer, :label => f.object.humanizer_question, :required => true, :hint => 'We need to know that you are human'
+    = f.input :humanizer_question_id, :as => :hidden
+    = f.commit_button "Resend confirmation email"
+    %p
+      = link_to "Already confirmed and need a new password?", "/users/password/new"

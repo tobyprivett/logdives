@@ -1,0 +1,4 @@
+- if current_user && current_user.name_accessor.blank?
+  #divealert
+    To make the most of logdives.com, please
+    = link_to "choose your username", preferences_path(:only => 'username'), :class => "#{params[:only] == 'username' ? 'current' : 'notification'}"

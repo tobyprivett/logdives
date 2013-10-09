@@ -1,0 +1,3 @@
+- content_for :alerts do
+  = render :partial => 'buddy_confirmations/state', :locals => {:buddy => @buddy}
+= render :partial => 'public_dives/details', :locals => {:dive => @buddy.dive}

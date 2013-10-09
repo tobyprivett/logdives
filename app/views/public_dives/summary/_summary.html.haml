@@ -1,0 +1,34 @@
+.summary
+  .info
+    %h5= link_to_viewer(dive)
+    .dive-date= dive.dive_date.to_s(:brief)
+    .log-val= dive.description
+    .log-val= static_rating_stars(dive.rating) if dive.notes_visible?
+  .measures
+    - if dive.max_depth_amount.present?
+      .log-attr Max depth
+
+    - if dive.average_depth_amount.present?
+      .log-attr Average depth
+
+    - if dive.total_dive_time
+      .log-attr Total dive time
+    &nbsp;
+  .measures
+    - if dive.max_depth_amount.present?
+      .log-val= dive.max_depth.to_s(@u.units)
+
+    - if dive.average_depth_amount.present?
+      .log-val= dive.average_depth.to_s(@u.units)
+
+    - if dive.total_dive_time.present?
+      .log-val= minutes(dive.total_dive_time)
+
+    &nbsp;
+
+  .buttons
+    .avatar-mini.float-right= image_tag(dive.diver.avatar_url(:thumb)) if dive.diver
+    .log-val= link_to_profile(dive.diver)
+
+
+

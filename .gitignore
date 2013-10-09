@@ -1,0 +1,17 @@
+.bundle
+db/*.sqlite3
+log/*.log
+log/*.log.*
+tmp/
+.sass-cache
+webrat.log
+public/uploads/*
+.DS_Store
+.rvmrc
+public/.DS_Store.bundle\n
+public/javascripts/all.js
+solr/data/*
+db/sphinx/development/*.*
+config/development.sphinx.conf
+config/database.yml
+vendor/cache/*.gem

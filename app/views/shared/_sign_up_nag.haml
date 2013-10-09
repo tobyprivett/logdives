@@ -1,0 +1,10 @@
+- if !user_signed_in?
+  #divealert
+    - if (controller_name == 'public_dives' || controller_name == 'profiles')
+      Make logdives.com your online log book.
+      %p
+      = link_to "Registering", "/users/sign_up"
+      is quick and easy. And free.
+      %p
+
+    = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :id => 'facebook_connect'

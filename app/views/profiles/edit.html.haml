@@ -1,0 +1,18 @@
+= semantic_form_for(@user, :url => profile_path, :method => 'put', :html => {:multipart => true} ) do |user_f|
+
+  = user_f.inputs 'Profile picture' do
+
+    = image_tag @user.avatar_url, :class => 'image-profile' if @user.avatar?
+    = user_f.input :avatar, :as => :file, :label => spacer
+
+  = user_f.inputs 'Biography' do
+    = user_f.input :bio, :label => spacer
+
+  %fieldset
+    = user_f.buttons do
+      = user_f.commit_button :save
+
+
+- content_for :scripts do
+  = stylesheet_link_tag 'jwysiwyg/jquery.wysiwyg.css'
+  = javascript_include_tag 'jquery.wysiwyg.js', 'profile_edit.js', 'jwysiwyg/controls/wysiwyg.link.js'

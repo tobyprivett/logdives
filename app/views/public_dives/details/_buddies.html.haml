@@ -1,0 +1,11 @@
+.row
+  .column.grid_2
+    = image_tag "fish.gif"
+  .column.grid_6
+    = dive_f.semantic_fields_for :buddies do |buddy_f|
+      - next unless buddy_f.object.confirmed?
+      - buddy_f.object.buddy_diver_name_accessor = obfuscate_name(buddy_f.object.buddy_diver)
+      - role = buddy_f.object.role_s
+      - buddy_hint = link_to 'view profile', profile_path(buddy_f.object.buddy_diver)
+      = buddy_f.input :buddy_diver_name_accessor, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'buddy_email', :disabled => true }, :label => role, :hint => buddy_hint
+

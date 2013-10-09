@@ -1,0 +1,8 @@
+.profile
+  = image_tag diver.avatar_url(:profile), :class => 'image-profile'
+  .name= obfuscate_name(diver)
+  .logged-dives
+    = pluralize(diver.dives.maximum(:dive_no), 'logged dive')
+
+
+

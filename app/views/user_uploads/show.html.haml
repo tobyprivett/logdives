@@ -1,0 +1,19 @@
+%fieldset
+  %h3
+    Uploaded File:
+  %p
+    = link_to @user_upload.file.filename, @user_upload.file.url
+    |
+    = pluralize(@user_upload.dives.length, "dive") + " added"
+
+  %table
+    - @user_upload.dives.each do |dive|
+      %tr
+        %td= dive.dive_date
+        %td= dive.max_depth
+        %td= dive.location
+      %tr
+        %td= link_to "Profile", dive_path(dive)
+        %td= 'Diver: ' + dive.diver.email if dive.diver
+        %td= image_tag dive.profile_image_url
+

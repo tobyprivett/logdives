@@ -1,0 +1,26 @@
+= dive_f.input :buddy_visible, :as => :hidden
+#buddy-on{ on_state(@dive.buddy_visible?) }
+  - buddy_count = @dive.buddies.empty? ? 1 : @dive.buddies.length
+  - (4 - buddy_count).times{|i| @dive.buddies.build}
+  = hidden_field_tag "dive_buddy_count", buddy_count
+  - index = 0
+
+  - title ||= "Buddies #{link_to_hide("buddy")}"
+
+  = dive_f.inputs title do
+    .column.grid_2
+      = image_tag "fish.gif"
+    .column.grid_6
+      = dive_f.semantic_fields_for :buddies do |buddy_f|
+        = render :partial => 'dives/fields/buddy', :locals => { :buddy_f => buddy_f, :index => index, :visible => (buddy_count > index) }
+        - index += 1
+
+      - if buddy_count < 3
+        = link_to "Add another", "#", :id => 'add_buddy_to_dive'
+
+
+#buddy-off{ off_state(@dive.buddy_visible?) }
+  %fieldset.inputs.empty
+    %legend
+      Buddies
+      = link_to_show("buddy")

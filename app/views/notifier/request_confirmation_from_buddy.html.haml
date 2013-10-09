@@ -1,0 +1,28 @@
+%p
+  = (@buddy.diver_name)
+  logged a dive with you at
+  = @buddy.dive.location
+  on
+  = @buddy.dive.dive_date
+
+%p
+  To confirm the dive, follow this link:
+  = @confirm_url
+
+- if @buddy.buddy_diver.last_sign_in_at.nil?
+  %p
+    We have created a free account for you on logdives.com.
+
+  %p
+    Follow
+    = link_to "this link", edit_password_url(@buddy.diver, :reset_password_token => @buddy.buddy_diver.reset_password_token)
+    to set up your password
+
+%p
+  Thanks!
+
+%p
+  The logdives team.
+
+
+

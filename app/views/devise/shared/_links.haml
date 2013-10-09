@@ -1,0 +1,7 @@
+= link_to image_tag("fb_login.png"), user_omniauth_authorize_path(:facebook), :id => 'facebook_connect'
+%dt
+  = link_to "Login", "/users/sign_in", :class => "#{'current' if controller_name == 'sessions'}"
+%dt
+  = link_to "Register", "/users/sign_up", :class => "#{'current' if controller_name == 'registrations'}"
+%dt
+  = link_to "Reset password", "/users/password/new", :class => "#{'current' if controller_name == 'passwords'}"

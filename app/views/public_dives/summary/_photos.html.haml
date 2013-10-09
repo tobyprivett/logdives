@@ -1,0 +1,6 @@
+.inline-photos
+  - dive.photos.each do |photo|
+    - if photo.image?
+      .thumbnail
+        = link_to image_tag(photo.image_url(:mini)), photo.image.url, :target => '_blank'
+

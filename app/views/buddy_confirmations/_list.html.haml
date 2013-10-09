@@ -1,0 +1,16 @@
+.row
+  .column.grid_9
+    %table.list
+      %th Diver
+      %th Location
+      %th Date
+      %th You
+      %tbody
+      - @buddies.each do |buddy|
+        %tr{:class => "#{cycle('on', 'off')}"}
+          %td= link_to_profile(buddy.diver)
+          %td= buddy.dive.location
+          %td= buddy.dive.dive_date
+          %td= link_to buddy.state.humanize,  buddy_confirmation_path(buddy)
+.row
+  = paginate @buddies

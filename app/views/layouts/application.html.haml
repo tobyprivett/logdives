@@ -1,0 +1,31 @@
+!!! 5
+%html{ :lang => "en"}
+  %head
+    = render :partial => '/layouts/parts/head'
+  %body
+    .row{:id => 'header'}
+      .column.grid_3
+        &nbsp;
+      .column.grid_12
+        #logo= link_to "logdives.com", "/"
+    .row
+      .column.grid_3
+        = render :partial => '/shared/sidebar'
+        #loading
+      .column.grid_9
+        = render :partial => '/shared/sign_up_nag'
+        = write_flash
+        #alerts= yield :alerts
+        = yield
+      .column.grid_3{:id => 'context_sidebar'}
+        = render :partial => '/shared/context_sidebar'
+
+    .row{:id => 'footer'}
+      .column.grid_3
+        &nbsp;
+      .column.grid_12
+        = render :partial => 'shared/footer'
+
+
+    = yield :appended_scripts
+

@@ -1,0 +1,11 @@
+.row
+  .column.grid_1
+  .column.grid_11
+
+    - templates_to_render = params[:only].present? ? [params[:only]] : [:email, :units, :lognumbers, :username, :password, :profile]
+
+    - templates_to_render.each do |t|
+      = render :partial => "preferences/#{t}"
+
+
+

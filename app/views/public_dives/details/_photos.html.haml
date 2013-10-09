@@ -1,0 +1,8 @@
+.row
+  .column.grid_2
+    = image_tag "camera.gif"
+  .colum.grid_6
+    %p
+    - @dive.photos.each do |photo|
+      = link_to image_tag(photo.image_url(:thumb)), photo.image.url, :target => '_blank'
+      &nbsp

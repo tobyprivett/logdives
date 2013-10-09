@@ -1,0 +1,5 @@
+%li.string.optional
+  %label Rating
+  = "<input type='radio' name='dive[rating]' value='0' style='display:none'#{' checked' if @dive.rating == 0}>".html_safe
+  - 1.upto(5) do |val|
+    = "<input type='radio' name='dive[rating]' value='#{val}' class='star'#{' checked' if @dive.rating == val}>".html_safe

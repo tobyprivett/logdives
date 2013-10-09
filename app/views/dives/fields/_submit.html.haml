@@ -1,0 +1,9 @@
+%fieldset
+  = dive_f.buttons do
+    = dive_f.commit_button :save
+
+- unless @dive.new_record?
+  .row
+    .column.grid_9.float-right
+      .delete-link
+        = link_to "Delete this dive", dive_path(@dive), :method => 'delete', :confirm => "Are you sure you want to delete this dive?"

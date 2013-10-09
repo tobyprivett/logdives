@@ -1,0 +1,10 @@
+- content_for :alerts do
+  #divealert
+    %p= "#{@buddy.dive.diver_name} added you as a #{(@buddy.role.present? ? @buddy.role : "buddy").downcase} on this dive"
+
+    %p
+      = link_to "Yes, I confirm this dive", buddy_confirmation_path(@buddy), :method => :put
+      |
+      = link_to "No, I do not confirm this dive", buddy_confirmation_path(@buddy), :method => :delete, :confirm => 'Are you sure you want to reject this dive?'
+
+= render :partial => 'public_dives/details', :locals => {:dive => @buddy.dive}

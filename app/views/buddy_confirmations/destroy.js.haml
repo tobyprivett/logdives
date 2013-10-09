@@ -1,0 +1,8 @@
+:plain
+
+  $("#divealert").fadeOut();
+  $("#divealert").html("#{escape_javascript(render(:partial => 'buddy_confirmations/state', :locals => {:buddy => @buddy}))}")
+  $("#divealert").fadeIn();
+  $("#inline-buddy-#{@buddy.id}").fadeOut();
+  $("#inline-buddy-#{@buddy.id}").html("#{@buddy.state.humanize}");
+  $("#inline-buddy-#{@buddy.id}").fadeIn();

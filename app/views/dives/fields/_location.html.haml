@@ -1,0 +1,7 @@
+.row
+  .column.grid_2
+    &nbsp;
+  .column.grid_5
+    - location_hint = 'e.g. Blue Hole, Dahab; HMS Scylla, Plymouth'
+    - location_hint = '' if @dive.errors.include?(:location)
+    = dive_f.input :location, :label => 'Dive site', :input_html => {:class => 'location', :autocomplete => 'off'}, :hint => location_hint

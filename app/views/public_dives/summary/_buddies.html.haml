@@ -1,0 +1,6 @@
+- buddies.each do |buddy|
+  .buddies
+    .buddy-role= buddy.role_s
+    .buddy-name= link_to_profile(buddy.buddy_diver)
+    - if dive.diver == @u
+      .buddy-state{:id => "inline-buddy-#{buddy.id}"}= render :partial => 'buddies/state', :locals => {:buddy => buddy}

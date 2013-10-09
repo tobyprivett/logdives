@@ -1,0 +1,7 @@
+.column.grid_2
+.column.grid_5
+  = waypoint_f.input :nested, :as => :hidden
+  = waypoint_f.input :depth_amount,  :label => 'Depth', :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :required => false, :hint => waypoint_f.object.depth.unit_name
+  = waypoint_f.input :depth_unit, :as => :hidden, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :collection => Depth.units, :include_blank => false, :label => spacer, :required => false, :hint => spacer
+  = waypoint_f.input :time,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :required => false, :hint => 'minutes'
+  = waypoint_f.input :name,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'waypoint_name', :autocomplete => :off}, :required => false, :label => 'Description', :hint => 'e.g. Shark sighting! Maximum depth'

@@ -1,0 +1,12 @@
+= render :partial => 'notifications', :locals => {:dive => @dive}
+
+= semantic_form_for @dive  do |dive_f|
+  = dive_f.input :template, :as => 'hidden'
+  = render :partial => "dives/#{@dive.template}/fields", :locals => {:dive_f => dive_f, :dive => @dive}
+  = render :partial => 'dives/fields/submit', :locals => {:dive_f => dive_f}
+
+= render :partial => 'shared/facebook_like', :locals => {:dive => @dive, :fb_ref => 'diver', :fb_source => @dive.to_param} unless @dive.new_record?
+
+= javascript_include_tag 'dive_edit.js', 'jquery.rating.pack.js'
+= stylesheet_link_tag  'jquery.uploadify.css'
+

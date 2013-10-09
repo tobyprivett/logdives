@@ -1,0 +1,13 @@
+= render :partial => "dives/fields/summary", :locals => {:dive_f => dive_f, :dive => @dive}
+
+- @dive.buddy_visible = true
+= render :partial => "dives/fields/buddies", :locals => {:dive_f => dive_f, :title => 'Instructor / Buddy'}
+= render :partial => 'dives/rec/profile', :locals => {:dive_f => dive_f}
+= render :partial => 'dives/rec/waypoints', :locals => {:dive_f => dive_f}
+= render :partial => 'dives/rec/tanks', :locals => {:dive_f => dive_f}
+
+
+= render :partial => 'dives/fields/equipment', :locals => {:dive_f => dive_f}
+= render :partial => 'dives/fields/conditions', :locals => {:dive_f => dive_f}
+= render :partial => 'dives/fields/notes', :locals => {:dive_f => dive_f}
+

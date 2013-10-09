@@ -1,0 +1,5 @@
+.divepage{:id => "dive_viewer_#{dive.to_param}"}
+  = render :partial => 'public_dives/summary/summary', :locals => {:dive => dive}
+  = render :partial => 'public_dives/summary/buddies', :locals => {:dive => dive, :buddies => dive.confirmed_buddies} if dive.buddy_visible? && dive.confirmed_buddies.present?
+  = render :partial => 'public_dives/summary/notes', :locals => {:dive => dive}   if dive.notes_visible? && dive.notes.present?
+  = render :partial => 'public_dives/summary/photos', :locals => {:dive => dive} if dive.photos_visible? && dive.photos.present?

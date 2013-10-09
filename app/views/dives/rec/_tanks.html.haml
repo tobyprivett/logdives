@@ -1,0 +1,16 @@
+- @dive.tanks.build(:pressure_unit => @u.units) if @dive.tanks.empty?
+
+= dive_f.inputs "Tank" do
+  .column.grid_2
+    = image_tag 'tanks.gif'
+  = dive_f.semantic_fields_for :tanks do |tank_f|
+
+    = tank_f.input :nested, :as => :hidden
+    = tank_f.input :start_pressure,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Start', :required => false
+    = tank_f.input :end_pressure,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'End', :required => false
+    = tank_f.input :pressure_unit, :as => :select,   :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :collection => Pressure.units, :include_blank => false, :label => spacer, :required => false
+
+    = tank_f.input :o2, :wrapper_html => {:style => ( 'display:none' if ['Air'].include?(tank_f.object.mix_type)), :class => 'inline o2'}, :input_html => {:class => 'mini-text'}, :required => false, :label => 'Nitrox'
+
+    = tank_f.input :mix_type, :label => '&nbsp'.html_safe, :as => :select, :collection => ["Air", "Nitrox"], :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text nitrox-selector'}, :include_blank => false
+    = tank_f.semantic_errors :mix

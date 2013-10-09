@@ -1,0 +1,4 @@
+:plain
+  $('#alerts').html("#{escape_javascript(write_flash)}");
+  $("#dive_detail").html("#{escape_javascript(render(:partial => 'form'))}");
+  $('html, body').animate({scrollTop: '0px'}, 300);

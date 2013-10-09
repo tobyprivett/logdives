@@ -1,0 +1,9 @@
+.row
+  .column.grid_2
+    %p
+    = render :partial => 'profiles/summary', :locals => {:diver => diver}
+    - if diver == current_user
+      = link_to 'Edit your profile', edit_profile_path(diver), :class => 'mini-link'
+  .column.grid_7
+    = raw diver.bio
+

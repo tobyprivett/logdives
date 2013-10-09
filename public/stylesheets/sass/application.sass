@@ -1,0 +1,338 @@
+@import "reset"
+@import "1kbgrid"
+@import "rails"
+@import "css3"
+
+body
+  font-family: Helvetica,Arial,sans-serif
+  font-size: 0.8em
+  margin: 0
+
+#logo
+  text-transform: uppercase
+  font-size: 1.6em
+  a
+    color: #000
+    text-decoration: none
+
+
+#header
+  background: #eee
+  padding: 8px 0 8px 4px
+  margin-bottom: 20px
+
+
+#nav
+  ul
+    vertical-align: middle
+    list-style-type: none
+    margin: 0
+    padding: 0
+  li
+    display: inline
+    font-size: 1.1em
+    text-transform: uppercase
+    font-weight: normal
+    padding: 3px 6px  0 0
+    a
+      text-decoration: none
+    a.current
+      color: #000
+      border-bottom: 1px solid #000
+      font-weight: normal
+    a:hover
+      font-weight: normal
+      border-bottom: 1px solid #000
+
+#sidebar
+  dt
+    margin: 10px 0 4px 0
+    border-bottom: 1px dotted #E3E3E3
+    padding: 4px 0 4px 0
+    text-transform: uppercase
+    font-size: 1em
+    font-style: italic
+    a
+      color: #000
+      text-decoration: none
+    a.current
+      color: #ff4075
+    a:hover
+      color: #ff4075
+
+  dd
+    padding: 4px 0 4px 0
+    font-style: italic
+    font-size: 0.9em
+    a
+      color: #000
+      text-decoration: none
+    a.current
+      color: #ff4075
+    a:hover
+      color: #ff4075
+    a.notification
+      font-weight: bold
+
+.summary
+  vertical-align: top
+  clear: both
+  padding: 0 0 4px 0
+  .info
+    display: inline-block
+    width: 240px
+  .rating-text
+    padding-top: 4px
+    font-style: italic
+  .measures
+    display: inline-block
+    width: auto
+    vertical-align: top
+  .buttons
+    width: auto
+    float: right
+    display: inline
+
+.buddies
+  vertical-align: top
+  clear: both
+  padding: 4px 0 4px 0
+  .buddy-role
+    display: inline
+    font-style: italic
+    font-size: 0.9em
+  .buddy-name
+    display: inline
+    a
+      font-size: 0.9em
+      text-transform: uppercase
+
+  .buddy-state
+    display: inline
+
+    font-size: 0.8em
+    a
+      color: #666
+
+#divealert
+  padding: 8px
+  margin-bottom: 10px
+  background-color: #DDD
+  font-size: 1.1em
+
+
+.row.open
+  margin-left: 5px
+  padding-left: 4px
+  padding-top: 4px
+  background: #eee
+  width: 754px
+  float: left
+
+.divepage
+  margin-top: 5px
+  padding-top: 10px
+  padding-bottom: 2px
+  border-top: 1px dotted
+
+
+
+#footer
+  background: #eee
+  padding: 1em 0 1em 1em
+  margin-top: 10px
+  margin-bottom: 20px
+
+.log
+  background: #eee
+  margin-bottom: 1.5em
+  padding: 1.5em
+
+.float-right
+  text-align: right
+  height: 100%
+
+
+.upload-button
+  text-align: left
+
+#photos
+  margin-top: 10px
+  img
+    margin: 0 0 4px 0px
+  .thumbnail
+    margin-top: 2px
+    margin-bottom: 12px
+
+.inline-photos
+  clear: both
+  padding: 4px
+  margin: 0
+  .thumbnail
+    display: inline
+    padding: 2px
+
+.dive-photo
+  margin-top: 10px
+  margin-left: 20px
+  margin-bottom: 20px
+
+table.dive-viewer
+  border: 31px
+
+table.list
+  margin-bottom: 2em
+  width: 620px
+  th
+    padding: 6px
+  td
+    vertical-align: top
+    padding: 6px
+    .last
+      padding-right: 0px
+
+tr.on
+  background: white
+
+tr.off
+  background: #eee
+
+.mini-link
+  color: #666
+  font-size: 0.8em
+
+.log-attr
+  padding: 2px 2px 3px 0
+  text-align: right
+  font-style: italic
+  font-size: 0.9em
+
+
+.log-val
+  padding: 2px 0px 3px 0
+  font-size: 0.9em
+  text-transform: uppercase
+
+.dive-date
+  clear: both
+  padding: 4px 10px 4px 0
+  text-transform: uppercase
+  font-size: 0.8em
+
+.updated-at
+  clear: both
+  padding: 6px 0 4px 0
+  font-style: italic
+  font-size: 0.8em
+
+
+.assets-link
+  clear: both
+  padding: 0px 0 4px 5px
+  font-style: italic
+  font-size: 0.8em
+
+.notes
+  color: #666
+  font-style: italic
+  margin-bottom: 5px
+  margin-top: 5px
+
+
+#avatar
+  margin-top: 10px
+
+.avatar-mini
+  padding: 0 0 2px 0
+
+  img
+    margin: 0
+    width: 25px
+    height: 25px
+
+#content
+
+  width: 780px
+  overflow: hidden
+
+.mini
+  font-size: 0.9em
+  font-style: italic
+
+
+.delete-link
+  a
+    font-size: 0.9em
+
+.image-no-border
+  padding: 0px
+  margin: 0px
+
+.image-thumb
+  padding: 0px
+  margin: 0px
+
+.image-profile
+  padding: 0px
+  margin: 0px
+
+.dive-list
+  margin-top: 15px
+
+.rating_image
+  margin: 0
+
+.profile
+  .name
+    font-size: 1.1em
+    font-weight: bold
+    line-height: 1.25
+    margin-top: 10px
+    margin-bottom: 5px
+
+  .logged-dives
+    font-style: italic
+    margin-bottom: 10px
+
+#facebook_connect
+  img
+    margin: 0
+    padding: 0
+
+#loading
+  display: none
+  position: fixed
+  top: 10px
+  font-weight: bold
+  font-style: italic
+  color: #ff4075
+  font-size: 1.2em
+  text-transform: uppercase
+
+#dive_detail
+  margin-top: 10px
+  margin-bottom: 20px
+
+#context_sidebar
+  margin-left: 40px
+  font-size: 0.9em
+  font-weight: normal
+
+
+#dive_template.dive-template-picker
+  width: 107px
+  height: 50px
+  margin-top: 2px
+  margin-bottom: 10px
+
+.tec-icon
+  img
+    margin-bottom: 13px
+
+.rec-icon
+  img
+    margin-bottom: 13px
+
+.ui-autocomplete-loading
+  background: white url(/images/ui-anim_basic_16x16.gif) right center no-repeat
+

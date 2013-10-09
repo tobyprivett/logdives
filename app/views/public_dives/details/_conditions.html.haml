@@ -1,0 +1,17 @@
+.row
+  .column.grid_2
+    = image_tag "shell.gif"
+
+  .column.grid_6
+    = dive_f.input :visibility, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :label => 'Visibility'
+
+    - dive_f.object.air_temperature = dive_f.object.air_temp.to_s(@u.units).html_safe
+    - dive_f.object.water_temperature_on_surface = dive_f.object.water_temp_surface.to_s(@u.units).html_safe
+    - dive_f.object.water_temperature_at_depth = dive_f.object.water_temp_depth.to_s(@u.units).html_safe
+
+    = dive_f.input :air_temperature, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :label => 'Air temp'
+    = dive_f.input :water_temperature_on_surface, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :label => 'Surface temp'
+    = dive_f.input :water_temperature_at_depth, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :label => 'Temp at depth'
+
+    - if dive_f.object.conditions.present?
+      = dive_f.object.conditions.map(&:name).join(", ")

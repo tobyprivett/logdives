@@ -1,0 +1,8 @@
+.row
+  .column.grid_2
+    = image_tag "fins.gif"
+  - if @dive.weight_amount.present?
+    = dive_f.input :weight, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :label => 'Weight'
+
+  - if dive_f.object.exposure_suits.present?
+    = dive_f.object.exposure_suits.map(&:name).join(", ")

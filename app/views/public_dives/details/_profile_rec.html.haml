@@ -1,0 +1,28 @@
+.row
+  .column.grid_2
+    = image_tag 'gauges.gif'
+  .column.grid_4
+
+    - dive_f.object.max_depth_amount = @dive.max_depth.to_s(@u.units)
+    = dive_f.input :max_depth_amount, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :label => 'Max depth', :hint => spacer
+
+    - dive_f.object.average_depth_amount = @dive.average_depth.to_s(@u.units)
+    = dive_f.input :average_depth_amount, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :label => 'Av. depth', :hint => spacer
+
+  .column.grid_4
+    = dive_f.input :bottom_time, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text', :disabled => true}, :label => 'Bottom time', :hint => 'minutes'
+    = dive_f.input :safety_stop, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text', :disabled => true}, :label => 'Safety stop', :hint => 'minutes'
+    = dive_f.input :total_dive_time, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text', :disabled => true}, :label => 'Total dive time', :hint => 'minutes'
+.row
+  .column.grid_2 &nbsp;
+
+  .column.grid_2
+    %li.inline.string
+      %label Time in
+      = time_select("dive", "time_in", {:include_blank => true, :disabled => true})
+      %p.hint= spacer
+  .column.grid_2
+    %li.inline.string
+      %label Time out
+      = time_select("dive", "time_out", {:include_blank => true, :disabled => true})
+      %p.hint= spacer

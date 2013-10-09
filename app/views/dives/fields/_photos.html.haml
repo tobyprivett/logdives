@@ -1,0 +1,17 @@
+= dive_f.input :photos_visible, :as => :hidden
+#photos-on{ on_state(@dive.photos_visible?) }
+  = render :partial => 'photos/upload_scripts'
+
+  = dive_f.inputs "Photos #{link_to_hide("photos")}" do
+    = fields_for Photo.new do |f|
+      = f.file_field :image, :rel => dive_photos_path(@dive)
+
+    #photos
+      = render :partial => 'photos/photo', :collection => @dive.photos
+
+
+#photos-off{ off_state(@dive.photos_visible?) }
+  %fieldset.inputs.empty
+    %legend
+      Photos
+      = link_to_show("photos")

@@ -1,0 +1,11 @@
+%fieldset
+  %legend Units of measure
+  .div
+    - if @u.metric?
+      You are viewing dives in Metric (bar, metres, kilos), switch to
+      = link_to "Imperial (ft, lb)", {:units => 'imperial'}, :id => 'imperial'
+    - else
+      You are viewing dives in Imperial (psi, feet, pounds), switch to
+      = link_to "Metric (bar, metres, kilos)", {:units => 'metric'}, :id => 'metric'
+
+    %p

@@ -1,0 +1,12 @@
+.row
+  .column.grid_2
+    = image_tag 'computer.gif'
+  .column.grid_6
+    = dive_f.semantic_fields_for :waypoints do |waypoint_f|
+
+      - waypoint_f.object.depth_amount = waypoint_f.object.depth.to_s(@u.units)
+      = waypoint_f.input :depth_amount,  :label => 'Depth', :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :required => false, :hint => spacer
+      = waypoint_f.input :time,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text', :disabled => true}, :required => false, :hint => 'minutes'
+      = waypoint_f.input :duration,  :wrapper_html => {:class => 'inline'}, :required => false, :input_html => {:class => 'mini-text', :disabled => true}, :hint => 'minutes'
+      = waypoint_f.input :name,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'waypoint_name', :disabled => true}, :required => false, :label => 'Description', :hint => 'e.g. Deep Stop, Gas switch'
+      %p

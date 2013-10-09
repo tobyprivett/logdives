@@ -1,0 +1,7 @@
+#dive_detail
+  = render :partial => 'profiles/profile', :locals => {:diver => @user}
+
+= render :partial => 'public_dives/list'
+
+- content_for :alerts do
+  = render :partial => 'shared/nagging'

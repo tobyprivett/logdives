@@ -1,0 +1,26 @@
+= dive_f.input :conditions_visible, :as => :hidden
+#conditions-off{ off_state(@dive.conditions_visible?) }
+  %fieldset.inputs.empty
+    %legend
+      Conditions
+      = link_to_show("conditions")
+
+
+#conditions-on{ on_state(@dive.conditions_visible?) }
+  = dive_f.inputs "Conditions  #{link_to_hide("conditions")}" do
+    .column.grid_2
+      = image_tag "shell.gif"
+
+
+    = dive_f.input :visibility, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text'}, :label => 'Visibility'
+    &nbsp;&nbsp;
+    = dive_f.input :air_temperature, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Air temp'
+    = dive_f.input :water_temperature_on_surface, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Surface temp'
+    = dive_f.input :water_temperature_at_depth, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Temp at depth'
+    = dive_f.input :temperature_unit, :as => :select, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :collection => Temperature.units, :include_blank => false, :label => spacer, :required => false
+
+    .row
+      .column.grid_1
+        &nbsp;
+      .column.grid_7.float-right{:style => 'padding-right: 0'}
+        = dive_f.input :conditions, :wrapper_html => {:class => 'inline'}, :as => :check_boxes, :collection => Condition.all, :label => spacer

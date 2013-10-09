@@ -1,0 +1,19 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+
+  site_name: Logdives.com
+  formtastic:
+    actions:
+      login: "Login"
+      save: "Save"
+      sign_up: "Register"
+      upload: "Upload"
+
+  errors:
+    messages:
+      carrierwave_processing_error: 'Sorry, we are unable to process this file type.'
+      carrierwave_integrity_error: 'Not an image.'
+

@@ -1,0 +1,29 @@
+
+
+= semantic_form_for @dive  do |dive_f|
+  = dive_f.inputs "<h4>Diver: #{link_to_profile(@dive.diver)}</h4>" do
+    = render :partial => '/public_dives/details/date_location', :locals => {:dive_f => dive_f}
+    = render :partial => "/public_dives/details/profile_#{@dive.template}", :locals => {:dive_f => dive_f}
+
+    - if @dive.profile_visible? && @dive.waypoints.present?
+      = render :partial => "/public_dives/details/waypoints_#{@dive.template}", :locals => {:dive_f => dive_f}
+
+    - if @dive.buddy_visible? && @dive.confirmed_buddies.present?
+      = render :partial => "/public_dives/details/buddies", :locals => {:dive_f => dive_f}
+
+    - if @dive.tanks_visible? && @dive.tanks.present?
+      = render :partial => "/public_dives/details/tanks", :locals => {:dive_f => dive_f}
+
+    - if @dive.equipment_visible? && (@dive.exposure_suits.present? || @dive.weight_amount.present?)
+      = render :partial => "/public_dives/details/equipment", :locals => {:dive_f => dive_f}
+
+    - if @dive.conditions_visible?
+      = render :partial => "/public_dives/details/conditions", :locals => {:dive_f => dive_f}
+
+    - if @dive.photos_visible? && @dive.photos.present?
+      = render :partial => '/public_dives/details/photos'
+
+    - if @dive.notes_visible? && @dive.notes.present?
+      = render :partial => '/public_dives/details/notes'
+
+= render :partial => 'shared/facebook_like', :locals => {:dive => @dive, :fb_ref => 'viewer', :fb_source => @dive.to_param}

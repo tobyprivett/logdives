@@ -1,0 +1,18 @@
+.row
+  .column.grid_2
+    = image_tag 'tanks.gif'
+  .column.grid_6
+    = dive_f.semantic_fields_for :tanks do |tank_f|
+
+      - tank_f.object.start_pressure = tank_f.object.starting.to_s(@u.units)
+      - tank_f.object.end_pressure = tank_f.object.ending.to_s(@u.units)
+
+      - if @dive.template == 'tec'
+        - tank_f.object.volume = tank_f.object.size.to_s
+        = tank_f.input :volume,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :label => 'Tank', :required => false
+
+      = tank_f.input :start_pressure,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :label => 'Start', :required => false
+      = tank_f.input :end_pressure,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'med-text', :disabled => true}, :label => 'End', :required => false
+      = tank_f.input :mix,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mediumer-text', :disabled => true}, :label => 'Mix', :required => false
+
+      %p

@@ -1,0 +1,11 @@
+= semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  = f.inputs '' do
+    = f.input :email
+    = f.input :password
+    <li><label for='user_remember_me'>Remember me</label>
+    <input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1"></li>
+    = f.commit_button :login
+    %p
+      = link_to "Didn't receive confirmation email?", new_confirmation_path(resource_name)
+    %p
+      = link_to "Forgotten your password?", "/users/password/new"

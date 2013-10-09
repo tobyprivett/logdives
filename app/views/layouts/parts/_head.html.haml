@@ -1,0 +1,19 @@
+%title
+  = "#{page_title(@dive)}"
+%meta{ :charset => 'utf-8' }
+%meta{ :name => 'description', :content => "You do log your dives, don't you?" }
+%meta{ :name => 'keywords', :content => "Scuba, diving, logs, dive site" }
+<meta property="fb:admins" content="693206183"/>
+= favicon_link_tag
+= stylesheet_link_tag 'application', 'flutie', 'jquery-ui', 'jquery.autocomplete.css', 'jquery.rating.css', :cache => true
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+= javascript_include_tag :defaults, :cache => true
+= javascript_include_tag 'google_analytics' if Rails.env.production?
+= yield :scripts
+= yield :fb_meta_desc
+= csrf_meta_tag
+
+
+

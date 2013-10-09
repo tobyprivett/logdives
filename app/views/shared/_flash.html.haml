@@ -1,0 +1,7 @@
+- if flash.present?
+  .row
+    .column.grid_1
+    .column.grid_9
+      - flash.each do |key, value|
+        #divealert
+          = value

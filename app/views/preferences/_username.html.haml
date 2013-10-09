@@ -1,0 +1,5 @@
+= semantic_form_for(@user) do |f|
+  = f.inputs 'Username' do
+    = f.input :name_accessor, :input_html => { :autocomplete => false}, :label => "Select a username for public display", :required => false, :hint => 'At least 4 letters'
+    = "<p class='inline-errors'>The username \'#{params[:user][:name_accessor]}\' has already been taken or is invalid</p>".html_safe  if @user.errors.include?(:name)
+    = f.commit_button 'Save username'

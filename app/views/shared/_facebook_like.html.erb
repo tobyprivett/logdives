@@ -1,0 +1,22 @@
+<%
+og_url =  Rails.env.production? ? "http://logdives.com/viewer/#{fb_source}" : "http://logdives.com/viewer/1-dos-ojos"
+og_title = page_title(dive)
+og_type = 'article'
+og_image = dive.diver.avatar_url(:profile).split("?").first
+og_site_name = 'Logdives'
+%>
+
+<iframe src="https://www.facebook.com/plugins/like.php?href=<%= og_url %>"
+  show_faces="false" scrolling="no" frameborder="0"
+  style="border:none; width:450px; height:30px"
+  send="true" fb_ref="<%= fb_ref %>" fb_source="<%= fb_source %>"></iframe>
+
+<% content_for :fb_meta_desc do -%>
+<meta property="og:title" content="<%= og_title %>"/>
+<meta property="og:type" content="<%= og_type %>"/>
+<meta property="og:image" content="<%= og_image %>"/>
+<meta property="og:url" content="<%= og_url %>"/>
+<meta property="og:site_name" content="<%= og_site_name %>"/>
+<% end -%>
+
+

@@ -1,0 +1,8 @@
+= semantic_form_for @dive do |dive_f|
+  = render :partial => 'dives/fields/summary', :locals => {:dive_f => dive_f}
+
+- content_for :scripts do
+  = javascript_include_tag 'dive_edit.js'
+
+- content_for :alerts do
+  = render :partial => 'shared/nagging'

@@ -1,0 +1,11 @@
+= dive_f.input :notes_visible, :as => :hidden
+#notes-on{ on_state(@dive.notes_visible?) }
+  = dive_f.inputs "Notes #{link_to_hide('notes')}" do
+    = render :partial => 'dives/fields/rating'
+    = dive_f.input :notes, :label => spacer
+
+#notes-off{ off_state(@dive.notes_visible?) }
+  %fieldset.inputs.empty
+    %legend
+      Notes
+      = link_to_show("notes")

@@ -1,0 +1,17 @@
+- buddy_f.object.nested = 'deleted' unless visible
+.buddy{:id => "buddy_#{index}", :style => ("display:none" unless visible)}
+  = buddy_f.input :nested, :as => :hidden
+  - if buddy_f.object.new_record?
+    - buddy_hint = buddy_f.semantic_errors :buddy_diver_id
+    - buddy_hint ||= 'Type the first few letters of their username or email address'
+
+    = buddy_f.input :buddy_diver_name,  :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'buddy_email', :autocomplete => :off}, :label => "Username or Email",
+      :hint => buddy_hint, :required => true
+
+  - else
+    - buddy_hint = "<span id='hint-buddy-#{buddy_f.object.id}'>#{buddy_f.object.state.humanize}</span> #{link_to_delete_buddy(buddy_f.object)}".html_safe
+
+    = buddy_f.input :buddy_diver_name, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'buddy_email', :disabled => true }, :label => "Username or Email",
+      :hint => buddy_hint, :required => true
+
+  = buddy_f.input :role,  :as => :select, :wrapper_html => {:class => 'inline'},:hint => spacer, :label => spacer, :collection => ['Buddy', 'Student', 'Instructor', 'Guide', 'Divemaster', 'Other']

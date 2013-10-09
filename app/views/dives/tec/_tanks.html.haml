@@ -1,0 +1,27 @@
+- tank_count = @dive.tanks.empty? ? 1 : @dive.tanks.length
+= hidden_field_tag "dive_tank_count", tank_count
+- (6 - tank_count).times{|i| @dive.tanks.build :pressure_unit => @u.units, :mix_type => 'Nitrox'}
+
+= dive_f.input :tanks_visible, :as => :hidden
+#tanks-on{ on_state(@dive.tanks_visible?) }
+  = dive_f.inputs "Tanks #{link_to_hide("tanks")}" do
+
+    .row
+      .column.grid_2
+        = image_tag "tanks.gif"
+      .column.grid_6
+        - index = 0
+        = dive_f.semantic_fields_for :tanks do |tank_f|
+          = render :partial => 'dives/tec/tank', :locals => { :tank_f => tank_f, :index => index, :visible => (tank_count > index) }
+          - index += 1
+
+        = link_to "Add", "#", :id => 'add_tank_to_dive'
+        |
+        = link_to "Remove", "#", :id => 'remove_tank_from_dive'
+
+
+#tanks-off{ off_state(@dive.tanks_visible?) }
+  %fieldset.inputs.empty
+    %legend
+      Tanks
+      = link_to_show("tanks")

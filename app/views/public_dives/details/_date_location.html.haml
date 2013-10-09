@@ -1,0 +1,14 @@
+.row
+  .column.grid_2
+    %p
+    = image_tag @dive.diver.avatar_url(:profile), :height => 66, :width => 72
+    = static_rating_stars(@dive.rating) if @dive.notes_visible?
+  .column.grid_5
+    = dive_f.input :dive_no, :as => :string, :wrapper_html => {:class => 'inline'},:input_html => {:class => 'mini-text', :disabled => true}, :label => 'Dive no', :hint => spacer, :required => true
+    - date_hint = spacer
+    = dive_f.input :dive_date, :as => :string, :wrapper_html => {:class => 'inline'},:input_html => {:class => 'datetime-text', :disabled => true}, :label => 'Date', :hint => date_hint
+    - location_hint = spacer
+    = dive_f.input :location, :wrapper_html => {:class => 'inline'}, :label => 'Dive site', :input_html => {:class => 'location', :disabled => true}, :hint => location_hint
+
+    - if @dive.description.present?
+      = dive_f.input :description, :label => 'Dive description', :wrapper_html => {:class => 'inline'}, :input_html => {:disabled => true}, :hint => spacer

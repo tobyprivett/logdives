@@ -1,0 +1,6 @@
+%span{:id => "buddy-#{buddy.id}"}
+  - if buddy.unconfirmed?
+    = link_to "Request confirmation", request_confirmation_buddies_url(:id => buddy, :format => :js), :method => :post#, :remote => true
+  - else
+    = buddy.state.humanize
+

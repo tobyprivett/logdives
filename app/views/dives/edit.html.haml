@@ -1,0 +1,7 @@
+= render :partial => 'form'
+
+- content_for :appended_scripts do
+  = render :partial => 'photos/upload_scripts'
+
+- content_for :alerts do
+  = render :partial => 'shared/nagging'

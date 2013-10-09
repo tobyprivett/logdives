@@ -1,0 +1,24 @@
+#divealert
+  - if buddy.awaiting_confirmation?
+    = link_to "Yes, I confirm this dive", buddy_confirmation_path(:id => buddy, :format => :js), :method => :put, :remote => true
+    |
+    = link_to "No, I reject this dive", buddy_confirmation_path(:id => buddy, :format => :js), :method => :delete, :remote => true
+
+  - elsif buddy.confirmed?
+
+    %p
+      = "You confirmed that #{buddy.buddy_diver_name} was on the dive.".html_safe
+
+    - if buddy.reciprocal_dive.present?
+      = "It has been added to your log as"
+      = link_to "##{buddy.reciprocal_dive.dive_no} #{buddy.reciprocal_dive.location}.", edit_dive_path(buddy.reciprocal_dive), :id => 'edit_dive_link'
+
+    - else
+
+      You can now
+      = link_to "add this dive to your log.", clone_buddy_path(:id => buddy, :format => :js), :method => :post, :remote => true, :id => :add_dive_to_log
+
+  - elsif buddy.rejected?
+    You rejected this dive. Changed you mind?
+    = link_to " Confirm this dive.", buddy_confirmation_path(:id => buddy, :format => :js), :method => :put, :remote => true
+

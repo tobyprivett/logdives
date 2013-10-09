@@ -1,0 +1,5 @@
+= semantic_form_for @user, :url => log_starts_path, :html => {:method => :put} do |f|
+  = f.inputs 'Dive numbers' do
+    = f.input :log_start_no, :input_html => { :autocomplete => false, :class => 'mini-text' }, :label => "Dive numbers should start at"
+    = f.commit_button 'Reset dive numbers'
+

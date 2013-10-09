@@ -1,0 +1,29 @@
+#sidebar
+  - unless user_signed_in?
+    = render :partial => 'devise/shared/links'
+  - else
+
+    %dt
+      = link_to "Log a dive", new_dive_path, :class => "#{'current' if controller_name == 'dives' && @dive  }"
+
+    %dt
+      = link_to "My Dives", dives_path, :class => "#{'current' if (controller_name == 'dives' && action_name == 'index')}", :id => 'my_dives_link'
+
+    %dt
+      = link_to 'Confirmation requests', '/buddy_requests', :class => "#{'current' if controller_name == 'buddy_confirmations' || controller_name == 'buddy_requests'}"
+      - if current_user.new_buddy_requests_count > 0
+
+        %dd
+          = link_to "#{current_user.new_buddy_requests_count} new", buddy_requests_path, :class => "#{controller_name == 'buddy_requests' ? 'current' : 'notification'}"
+      - if controller_name == 'buddy_confirmations' || controller_name == 'buddy_requests'
+        %dd= link_to "Completed", buddy_confirmations_path, :class => "#{'current' if controller_name == 'buddy_confirmations' && action_name == 'index'}"
+
+    %dt
+      = link_to "Settings", preferences_path, :class => "#{'current' if controller_name == 'preferences'}"
+
+  %dt
+    = link_to "Dive Feed", "/latest", :class => "#{'current' if (controller_name == 'public_dives' && action_name == 'index')}"
+
+
+
+:javascript

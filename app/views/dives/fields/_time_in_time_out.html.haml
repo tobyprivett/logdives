@@ -1,0 +1,10 @@
+.column.grid_2
+  %li.inline.string
+    %label Time in
+    = time_select("dive", "time_in", {:include_blank => true})
+    %p.hint= spacer
+.column.grid_2
+  %li.inline.string
+    %label Time out
+    = time_select("dive", "time_out", {:include_blank => true})
+    %p.hint= spacer

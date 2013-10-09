@@ -1,0 +1,3 @@
+<%- if flash[:error].blank? -%>
+  $('#photo-<%= @photo.id %>').remove();
+<%- end -%>

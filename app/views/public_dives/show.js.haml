@@ -1,0 +1,4 @@
+:plain
+  $("#dive_detail").html("#{escape_javascript(render(:partial => 'details'))}");
+  $('html, body').animate({scrollTop: '0px'}, 300);
+  $("#context_sidebar").html("#{escape_javascript(render(:partial => '/shared/context_sidebar'))}");

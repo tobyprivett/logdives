@@ -1,0 +1,8 @@
+- if dive.buddies.unconfirmed.present?
+  #divealert
+    - dive.buddies.unconfirmed.each do |buddy|
+      %p{:id => "buddy-#{buddy.id}"}
+        = "You added #{buddy.buddy_diver_name} to the dive."
+        = link_to "Request confirmation", request_confirmation_buddies_url(:id => buddy, :format => :js), :method => :post, :remote => true
+
+

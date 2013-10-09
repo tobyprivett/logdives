@@ -1,0 +1,23 @@
+= dive_f.input :equipment_visible, :as => :hidden
+#equipment-on{ on_state(@dive.equipment_visible?) }
+  = dive_f.inputs "Equipment #{link_to_hide("equipment")}" do
+    .row
+      .column.grid_2
+        = image_tag "fins.gif"
+
+      = dive_f.input :weight_amount, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :label => 'Weight'
+      = dive_f.input :weight_unit, :as => :select, :wrapper_html => {:class => 'inline'}, :input_html => {:class => 'mini-text'}, :collection => Weight.units, :include_blank => false, :label => spacer, :required => false
+    .row
+      .column.grid_1
+        &nbsp;
+      .column.grid_7.float-right{:style => 'padding-right: 0'}
+        = dive_f.input :exposure_suits, :label => spacer, :wrapper_html => {:class => 'inline'}, :as => :check_boxes, :collection => ExposureSuit.all
+
+
+
+
+#equipment-off{ off_state(@dive.equipment_visible?) }
+  %fieldset.inputs.empty
+    %legend
+      Equipment
+      = link_to_show("equipment")

@@ -1,0 +1,7 @@
+= semantic_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+  = f.inputs 'Please enter your new password' do
+    = f.hidden_field :reset_password_token
+    = f.input :password
+    = f.input :password_confirmation, :required => true
+    = f.commit_button "Save my password"
+

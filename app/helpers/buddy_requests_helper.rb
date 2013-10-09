@@ -1,0 +1,2 @@
+module BuddyRequestsHelper
+end
